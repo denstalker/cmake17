@@ -11,11 +11,15 @@ project(First VERSION 1.0.0 LANGUAGES C CXX)
 #set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 ## Widgets finds its own dependencies.
-#find_package(Qt5Widgets REQUIRED)
+#find_package(Qt5Widgets REQUIRED )
 
 
 #qt5_use_modules(First Widgets)
 
+
+#set(Qt5Core_DIR "/home/denis/Qt/5.12.3/gcc_64/lib/cmake/Qt5Core")
+#set(Qt5_DIR "/home/denis/Qt/5.12.3/gcc_64/lib/cmake/Qt5")
+#set(QT_QMAKE_EXECUTABLE "/home/denis/Qt/5.12.3/gcc_64/bin/qmake")
 
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
 
@@ -27,24 +31,24 @@ add_executable(First)
 
 # Скомпилировать статическую библиотеку "MyLibrary" из
 # исходников "ObjectHandler.c", "TimeManager.c" и "MessageConsumer.c":
-add_library(TextView STATIC )
+#add_library(TextView STATIC )
 
 # Добавить к цели "MyExecutable" исходник "MessageConsumer.c":
 target_sources(First PUBLIC
     src/main.cpp
-    src/widget.cpp
-    src/line.cpp
-    src/textshape.cpp
-    src/textview.cpp
+    src/navigator.cpp
+    src/concretestrategya.cpp
+    src/concretestrategyb.cpp
+    src/concretestrategyc.cpp
     )
 
-target_sources(TextView PUBLIC
-    src/textview.cpp
-    )
+#target_sources(TextView PUBLIC
+#    src/textview.cpp
+#    )
 
 
 target_include_directories(First PUBLIC include)      # папка с включаемыми .h
-target_include_directories(TextView PUBLIC include)      # папка с включаемыми .h
+#target_include_directories(TextView PUBLIC include)      # папка с включаемыми .h
 
 
 ## The Qt5Widgets_LIBRARIES variable also includes QtGui and QtCore
