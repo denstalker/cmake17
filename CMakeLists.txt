@@ -4,22 +4,33 @@ cmake_minimum_required(VERSION 3.0)
 # Задать характеристики проекта "MyProject":
 project(First VERSION 1.0.0 LANGUAGES C CXX)
 
+
+#######################################################
+########## Настройки для работы с Qt ##################
+
 ## Tell CMake to run moc when necessary:
 #set(CMAKE_AUTOMOC ON)
 ## As moc files are generated in the binary dir, tell CMake
 ## to always look for includes there:
 #set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-## Widgets finds its own dependencies.
-#find_package(Qt5Widgets REQUIRED )
+## включаем поиск библиотек с использованием find_package()
+## через REQUIRED указываем, что библиотеки обязательны
+#find_package(Qt5Core REQUIRED)
+#find_package(Qt5Gui REQUIRED)
+#find_package(Qt5Widgets REQUIRED)
 
 
-#qt5_use_modules(First Widgets)
+### The Qt5Widgets_LIBRARIES variable also includes QtGui and QtCore
+#target_link_libraries(First Qt5::Core)
+#target_link_libraries(First Qt5::Gui)
+#target_link_libraries(First Qt5::Widgets)
 
 
-#set(Qt5Core_DIR "/home/denis/Qt/5.12.3/gcc_64/lib/cmake/Qt5Core")
-#set(Qt5_DIR "/home/denis/Qt/5.12.3/gcc_64/lib/cmake/Qt5")
-#set(QT_QMAKE_EXECUTABLE "/home/denis/Qt/5.12.3/gcc_64/bin/qmake")
+#ПРОПИСАТЬ В CMAKE_PROPFIX_PATH путь к библиотеке Qt
+#/home/denis/Qt/5.12.3/gcc_64/lib/cmake
+
+########################################################3
 
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
 
@@ -51,8 +62,7 @@ target_include_directories(First PUBLIC include)      # папка с включ
 #target_include_directories(TextView PUBLIC include)      # папка с включаемыми .h
 
 
-## The Qt5Widgets_LIBRARIES variable also includes QtGui and QtCore
-#target_link_libraries(First ${Qt5Widgets_LIBRARIES})
+
 
 
 # Установить свойству 'C_STANDARD' значение "17",

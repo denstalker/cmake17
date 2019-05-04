@@ -1,3 +1,10 @@
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QLabel>
+#include <QApplication>
+
+
 #include <iostream>
 using namespace std;
 #include "navigator.h"
@@ -14,6 +21,8 @@ int main()
     cout << navi->executeStrategy(4,55) << endl;
 
     cout << nav.executeStrategy(2,6) << endl;
+
+
 
 
 
